@@ -24,9 +24,16 @@ public class UserValidations {
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
+
 	public boolean validateMobileFormat(String mobileFormat) {
-		Pattern pattern = Pattern.compile("^(?:[0-9] ?{6,14}[0-9]$)");
+		Pattern pattern = Pattern.compile("^(91\\s*[7-9][0-9]{9})$");
 		Matcher matcher = pattern.matcher(mobileFormat);
+		return matcher.matches();
+	}
+
+	public boolean validatePasswordRules(String passwordRules) {
+		Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#&()-[{}]:;',?/~$^+=<>]).{8,8}$");
+		Matcher matcher = pattern.matcher(passwordRules);
 		return matcher.matches();
 	}
 
@@ -34,21 +41,32 @@ public class UserValidations {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to User Registration system to ensure all Validations");
 		System.out.println("Enter your first name");
+		String firstName = scanner.nextLine();
+
 		System.out.println("Enter your last name");
+		String lastName = scanner.nextLine();
+
 		System.out.println("Enter your email");
+
+		String email = scanner.nextLine();
+
 		System.out.println("Enter your mobile format");
-		String firstName = scanner.next();
-		String lastName = scanner.next();
-		String email = scanner.next();
-		String mobileFormat = scanner.next();
+		String mobileFormat = scanner.nextLine();
+
+		System.out.println("Enter your password rules");
+		String passwordRules = scanner.nextLine();
+
 		boolean result = new UserValidations().validateFirstName(firstName);
 		boolean result1 = new UserValidations().validateLastName(lastName);
 		boolean result2 = new UserValidations().validateEmail(email);
 		boolean result3 = new UserValidations().validateMobileFormat(mobileFormat);
+		boolean result4 = new UserValidations().validatePasswordRules(passwordRules);
+
 		System.out.println(result);
 		System.out.println(result1);
 		System.out.println(result2);
 		System.out.println(result3);
+		System.out.println(result4);
 	}
 
 }
