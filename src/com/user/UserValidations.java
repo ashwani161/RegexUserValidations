@@ -20,7 +20,7 @@ public class UserValidations {
 	}
 
 	public boolean validateEmail(String email) {
-		Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+		Pattern pattern = Pattern.compile("^([^\\.][a-zA-Z]+[\\.+_-]{0,1}[0-9]*[^\\.]@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}[\\.]*[a-z^la]*)$");
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
